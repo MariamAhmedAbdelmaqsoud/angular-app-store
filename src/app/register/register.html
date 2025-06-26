@@ -1,0 +1,61 @@
+<div class="container">
+
+<form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
+
+    <div>
+      <!-- email -->
+      <label>Email</label>
+      <input
+        type="email"
+        placeholder="user@email.com"
+        formControlName="email"
+      />
+
+      @if (submitted && registerForm.controls.email.errors) { @if
+      (registerForm.controls.email.errors['required']) {
+      <small>Email is required</small>
+      } @if (registerForm.controls.email.errors['email']) {
+      <small>Enter a valid email (user&#64;email.com)</small>
+      } }
+
+      <!-- name -->
+      <label>Name</label>
+      <input type="text" formControlName="name" />
+
+      @if (submitted && registerForm.controls.name.errors) { @if
+      (registerForm.controls.name.errors['required']) {
+      <small>Name is required</small>
+      } }
+
+      <!-- username -->
+      <label>Username</label>
+      <input type="text" formControlName="username" />
+
+      @if (submitted && registerForm.controls.username.errors) {
+      <small>Username is required</small>
+      <small>No spaces allowed</small>
+      }
+
+      <!-- password -->
+      <label>Password</label>
+      <input type="password" formControlName="password" />
+
+      @if (submitted && registerForm.controls.password.errors) { @if
+      (registerForm.controls.password.errors['required']) {
+      <small>Password is required</small>
+      } @if (registerForm.controls.password.errors['pattern']) {
+      <small>Password must be at least 8 characters</small>
+      } }
+
+      <!-- confirm password -->
+      <label>Confirm Password</label>
+      <input type="password" formControlName="confirmPassword" />
+
+      @if (registerForm.errors?.['passwordMismatch']) {
+      <small>Passwords do not match</small>
+      }
+
+      <button type="submit">Register</button>
+  </div>
+</form>
+</div>

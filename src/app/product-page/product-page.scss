@@ -1,0 +1,95 @@
+.product-page {
+  padding: 1rem;
+  font-family: "Arial", sans-serif;
+
+  .welcome-message {
+    margin: 1rem 0;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem;
+
+    .product-card {
+      border: 1px solid #eee;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      background-color: #f9f9f9;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+
+      .stock-label {
+        font-size: 0.75rem;
+        font-weight: bold;
+        border-radius: 4px;
+        padding: 0.25rem 0.5rem;
+        margin-bottom: 0.5rem;
+        display: inline-block;
+      }
+
+      .in-stock {
+        background-color: #d4edda;
+        color: #155724;
+      }
+
+      .out-stock {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
+
+      .product-image {
+        width: 100%;
+        height: 160px;
+        object-fit: contain;
+        margin-bottom: 1rem;
+      }
+
+      .product-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+      }
+
+      .product-description {
+        font-size: 0.9rem;
+        color: #666;
+        margin: 0.5rem 0;
+      }
+
+      .product-price {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      .product-rating {
+        margin-bottom: 0.5rem;
+
+        .fa-star {
+          color: #ccc;
+        }
+
+        .checked {
+          color: #f39c12;
+        }
+      }
+
+      .add-to-cart {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #218838;
+        }
+      }
+    }
+  }
+}

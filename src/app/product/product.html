@@ -1,0 +1,54 @@
+<div class="product-page">
+  @if (product()) {
+  <div class="product-gallery">
+    <img
+      class="main-image"
+      [src]="selectedImage || product().images[0]"
+      alt="Product Image"
+    />
+  </div>
+
+  <div class="product-info">
+    <h2>{{ product().title }}</h2>
+    <p class="desc">{{ product().description }}</p>
+    <p class="price">
+      ${{ product().price }}
+      <span class="monthly"
+        >or {{ (product().price / 6) | number:'1.2-2' }}/month</span
+      >
+    </p>
+
+    <p class="rating"><i class="fas fa-star"></i> {{ product().rating }} / 5</p>
+
+    <p
+      class="status"
+      [ngClass]="product().availabilityStatus === 'In Stock' ? 'in-stock' : 'out-stock'"
+    >
+      {{ product().availabilityStatus }}
+    </p>
+
+    <div class="options">
+      <p><strong>Category:</strong> {{ product().category }}</p>
+      <p><strong>Brand:</strong> {{ product().brand }}</p>
+    </div>
+
+    <div class="quantity">
+      <button (click)="decrease()">−</button>
+      <span>{{ quantity }}</span>
+      <button (click)="increase()">+</button>
+    </div>
+
+    <p class="stock-alert">
+      Only {{ product().stock }} Items Left!
+      <span class="urgent">Don’t miss it 🔥</span>
+    </p>
+
+    <div class="actions">
+      <button class="buy-now"><i class="fas fa-bolt"></i> Buy Now</button>
+      <button class="add-cart" (click)="handleAddToCart()">
+        <i class="fas fa-cart-plus"></i> Add to Cart
+      </button>
+    </div>
+  </div>
+  }
+</div>

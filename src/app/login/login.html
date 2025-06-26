@@ -1,0 +1,42 @@
+<form #loginform="ngForm" (ngSubmit)="handleLogin(loginform)">
+  <div class="container">
+    <!-- login -->
+    <label>Email address</label>
+    <input
+      type="email"
+      name="email"
+      placeholder="user&#64;email.com"
+      ngModel
+      required
+      pattern="^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$"
+      #emailAddress="ngModel"
+    />
+    <div *ngIf="emailAddress.invalid && emailAddress.touched">
+      <small *ngIf="emailAddress.errors?.['required']">
+        Email is required
+      </small>
+      <small *ngIf="emailAddress.errors?.['pattern']">
+        Please enter a valid email (user&#64;email.com)
+      </small>
+    </div>
+    <!-- password -->
+    <label>Password</label>
+    <input
+      type="password"
+      name="password"
+      placeholder="At least 8 characters"
+      ngModel
+      required
+      minlength="8"
+      #passRef="ngModel"
+    />
+    <div *ngIf="passRef.invalid && passRef.touched">
+      <small *ngIf="passRef.errors?.['required']"> Password is required </small>
+      <small *ngIf="passRef.errors?.['minlength']">
+        Password must be at least 8 characters
+      </small>
+    </div>
+    <button type="submit" [disabled]="!loginform.valid">Login</button>
+  </div>
+</form>
+

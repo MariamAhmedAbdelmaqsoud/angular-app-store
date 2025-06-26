@@ -1,0 +1,68 @@
+.container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: "Arial", sans-serif;
+
+  label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    &:invalid.ng-touched {
+      border-color: #dc3545;
+    }
+
+    &:valid.ng-touched {
+      border-color: #28a745;
+    }
+  }
+
+  small {
+    display: block;
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: -0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #004d40;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

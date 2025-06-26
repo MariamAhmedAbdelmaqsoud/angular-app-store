@@ -1,0 +1,42 @@
+<div class="product-page">
+  <div class="container">
+    <div class="welcome-message">
+      <p>Nice to have you here!💖 Let the good shopping begin.</p>
+    </div>
+    <div class="product-grid">
+      @for (product of products(); track product.id) {
+      <a [routerLink]="['/product', product.id]" class="product-card">
+        <div
+          class="stock-label"
+          [ngClass]="product.availabilityStatus === 'In Stock' ? 'in-stock' : 'out-stock'"
+        >
+          {{ product.availabilityStatus }}
+        </div>
+
+        <img
+          [src]="product.thumbnail"
+          [alt]="product.title"
+          class="product-image"
+        />
+        <h3 class="product-title">{{ product.title }}</h3>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">{{ product.price | currency: 'USD' }}</p>
+        <div class="product-rating">
+          @for (item of [1, 2, 3, 4, 5]; track $index; let i = $index) {
+          <i
+            class="fa"
+            [ngClass]="i < product.rating ? 'fa-star checked' : 'fa-star'"
+          ></i>
+          }
+        </div>
+        <button
+        class="add-to-cart"
+        (click)="$event.preventDefault(); $event.stopPropagation(); handleCartClick(product)"
+      >
+        {{ isInCart(product.id) ? '✔️ Added – View Cart' : 'Add to Cart' }}
+      </button>
+      </a>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,149 @@
+.product-page {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  flex-wrap: wrap;
+
+  .product-gallery {
+    flex: 1;
+    max-width: 50%;
+
+    .main-image {
+      width: 100%;
+      height: 400px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .thumbnail-gallery {
+      display: flex;
+      gap: 0.5rem;
+
+      img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        cursor: pointer;
+
+        &.active {
+          border-color: #000;
+        }
+      }
+    }
+  }
+
+  .product-info {
+    flex: 1;
+    max-width: 40%;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .desc {
+      color: #555;
+      margin-bottom: 1rem;
+    }
+    .rating i{
+      color: gold;
+    }
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+
+      .monthly {
+        font-size: 0.9rem;
+        color: #888;
+        display: block;
+      }
+    }
+
+    .rating {
+      margin-bottom: 0.5rem;
+    }
+
+    .status {
+      font-weight: bold;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 1rem;
+
+      &.in-stock {
+        background-color: #d4edda;
+        color: #155724;
+      }
+
+      &.out-stock {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
+    }
+
+    .options {
+      margin-bottom: 1rem;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 1rem 0;
+
+      button {
+        padding: 0.5rem 1rem;
+        font-size: 1.2rem;
+      }
+
+      span {
+        font-size: 1.2rem;
+      }
+    }
+
+    .stock-alert {
+      color: #d9534f;
+      font-weight: bold;
+
+      .urgent {
+        display: block;
+        font-size: 0.9rem;
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      button {
+        flex: 1;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        &:hover {
+          filter: brightness(0.9);
+        }
+      }
+
+      .buy-now {
+        background-color: #004d40;
+        color: #fff;
+      }
+
+      .add-cart {
+        background-color: #ffff;
+        color: #004d40;
+      }
+    }
+  }
+}
+
