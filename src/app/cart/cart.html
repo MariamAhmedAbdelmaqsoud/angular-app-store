@@ -1,58 +1,67 @@
 <div class="cart-container">
-  <table class="cart-table">
-    <thead>
-      <tr>
-        <th>Description</th>
-        <th>Quantity</th>
-        <th>Remove</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (item of cartItems(); track item.product.id) {
-      <tr class="cart-item">
-        <td class="description">
-          <div class="product-info">
-            <img
-              [src]="item.product.thumbnail"
-              alt="Product Image"
-              class="product-img"
-            />
-            <div class="text">
-              <strong>{{ item.product.title }}</strong><br />
-              <small>Product Code: MLSB</small>
+  @if (cartItems().length > 0) {
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Remove</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of cartItems(); track item.product.id) {
+        <tr class="cart-item">
+          <td class="description">
+            <div class="product-info">
+              <img
+                [src]="item.product.thumbnail"
+                alt="Product Image"
+                class="product-img"
+              />
+              <div class="text">
+                <strong>{{ item.product.title }}</strong><br />
+                <small>Product Code: MLSB</small>
+              </div>
             </div>
-          </div>
-        </td>
-        <td class="quantity">
-          <div class="qty-controls">
-            <button
-              class="qty-btn"
-              (click)="cartService.increaseItemQuantity(item.product.id)"
-            >
-              <i class="fa-solid fa-plus"></i>
+          </td>
+          <td class="quantity">
+            <div class="qty-controls">
+              <button
+                class="qty-btn"
+                (click)="cartService.increaseItemQuantity(item.product.id)"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+              <span>{{ item.quantity }}</span>
+              <button
+                class="qty-btn"
+                (click)="cartService.decreaseItemQuantity(item.product.id)"
+              >
+                <i class="fa-solid fa-minus"></i>
+              </button>
+            </div>
+          </td>
+          <td class="remove">
+            <button class="remove-btn" (click)="removeItem(item.product.id)">
+              <i class="fas fa-trash-alt"></i>
             </button>
-            <span>{{ item.quantity }}</span>
-            <button
-              class="qty-btn"
-              (click)="cartService.decreaseItemQuantity(item.product.id)"
-            >
-              <i class="fa-solid fa-minus"></i>
-            </button>
-          </div>
-        </td>
-        <td class="remove">
-          <button class="remove-btn" (click)="removeItem(item.product.id)">
-            <i class="fas fa-trash-alt"></i>
-          </button>
-        </td>
-        <td class="price">£{{ item.product.price }}</td>
-      </tr>
-      }
-    </tbody>
-  </table>
+          </td>
+          <td class="price">£{{ item.product.price }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
 
-  <div class="cart-total">
-    <p><strong>Total: ${{ getTotal() }}</strong></p>
-  </div>
+    <div class="cart-total">
+      <p><strong>Total: ${{ getTotal() }}</strong></p>
+    </div>
+  }
+
+  @else {
+    <div class="empty-cart">
+      <i class="fas fa-shopping-cart fa-3x"></i>
+      <p>Your cart is currently empty.</p>
+    </div>
+  }
 </div>

@@ -8,7 +8,7 @@ import { CartService } from '../services/CartService';
   styleUrl: './cart.scss',
 })
 export class Cart {
-  readonly cartService = inject(CartService);
+  cartService = inject(CartService);
   cartItems = this.cartService.cartItems;
   removeItem(id: number) {
     this.cartService.removeFromCart(id);
